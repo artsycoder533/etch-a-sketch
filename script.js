@@ -1,5 +1,6 @@
 // variables
 const container = document.querySelector('.container');
+const blackBtn = document.querySelector('.black');
 const changeGridBtn = document.querySelector('.change-grid');
 const fadeColorBtn = document.querySelector('.change-color');
 const rainbowBtn = document.querySelector(".rainbow");
@@ -11,6 +12,7 @@ const powerBtn = document.querySelector('.power');
 window.addEventListener('DOMContentLoaded', function () {
     powerBtn.addEventListener('click', function () {
         // simulate turning power on
+        blackBtn.classList.toggle("blackout");
         fadeColorBtn.classList.toggle("blackout");
         changeGridBtn.classList.toggle("blackout");
         rainbowBtn.classList.toggle("blackout");
@@ -33,15 +35,46 @@ function createDivs(rows, cols) {
         const div = document.createElement('DIV');
         div.classList.add("child");
         container.appendChild(div);
-        div.addEventListener('mouseenter', function () {
-           //add draw class to all divs, so the default color is black
-            // div.classList.add("draw");
-            // div.style.backgroundColor = "rgb(0, 0, 0)";
-            // div.classList.add("erase");
-        });
-        
+        // div.addEventListener('mouseenter', function () {
+        //    //add draw class to all divs, so the default color is black
+        //     // div.classList.add("draw");
+        //     // div.style.backgroundColor = "rgb(0, 0, 0)";
+        //     // div.classList.add("erase");
+        // });
     }   
 }
+
+blackBtn.addEventListener('click', defaultColor);
+
+function defaultColor() {
+    const defaultDivs = container.children;
+    for (const node of defaultDivs) {
+        node.addEventListener('mouseenter', function () {
+            node.style.backgroundColor = "rgb(0, 0, 0)";
+        })
+    }
+}
+
+
+// function createDivs(rows, cols) {
+// 	//remove all children of container to get rid of lines at the bottom
+// 	// eraseGrid();
+// 	container.innerHTML = "";
+// 	container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
+// 	container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
+// 	//loop through to create rows*columns number of divs
+// 	for (let i = 0; i < rows * cols; i++) {
+// 		const div = document.createElement("DIV");
+// 		div.classList.add("child");
+// 		container.appendChild(div);
+// 		div.addEventListener("mouseenter", function () {
+// 			//add draw class to all divs, so the default color is black
+// 			// div.classList.add("draw");
+// 			// div.style.backgroundColor = "rgb(0, 0, 0)";
+// 			// div.classList.add("erase");
+// 		});
+// 	}
+// }
 
 // add event listener for change grid 
 changeGridBtn.addEventListener("click", function () {
