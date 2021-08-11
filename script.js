@@ -8,8 +8,8 @@ window.addEventListener('DOMContentLoaded', function () {
     createDivs(16, 16);
 });
 
-btn.addEventListener("click", function () {
-    const dimension = prompt("how many squares per side?");
+changeGrid.addEventListener("click", function () {
+    const dimension = prompt("how many squares per side? Choose a number between 1 & 99");
     while ((dimension > 100) && (dimension <= 0)) {
         prompt("Please choose an integer less than 100");
     }
@@ -18,9 +18,7 @@ btn.addEventListener("click", function () {
 
 btnErase.addEventListener("click", function () {
     const erase = container.childNodes;
-    for (const node of erase) {
-        node.classList.remove('draw');
-    }
+    erase.style.backgroundColor = "white";
 })
 
 //create divs

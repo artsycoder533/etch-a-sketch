@@ -13,23 +13,32 @@ body {
 }
 
 .controls {
-    width: 300px;
+    width: 500px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    
+    place-items: center;
 }
+
 
 .control-btn {
     padding: 15px;
+    width: 175px;
     font-family:'Courier New', Courier, monospace;
     text-transform: uppercase;
     background: black;
     color: white;
     border-radius: 5px;
     border: none;
+    font-size: 16px;
     cursor: pointer;
 }
+
+.control-btn:hover {
+    transform: skew(10deg, 10deg);
+    opacity: 0.5;
+}
+
 .outside-wrapper {
     display: flex;
     flex-direction: column;
