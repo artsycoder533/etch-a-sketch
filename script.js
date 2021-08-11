@@ -7,6 +7,7 @@ const rainbowBtn = document.querySelector(".rainbow");
 const eraseBtn = document.querySelector('.erase');
 const powerBtn = document.querySelector('.power');
 
+//EVENT LISTENERS
 
 // add onload event
 window.addEventListener('DOMContentLoaded', function () {
@@ -23,58 +24,16 @@ window.addEventListener('DOMContentLoaded', function () {
     
 });
 
-//create divs
-function createDivs(rows, cols) {
-    //remove all children of container to get rid of lines at the bottom
-    // eraseGrid();
-    container.innerHTML = "";
-    container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
-    //loop through to create rows*columns number of divs
-    for (let i = 0; i < rows * cols; i++){
-        const div = document.createElement('DIV');
-        div.classList.add("child");
-        container.appendChild(div);
-        // div.addEventListener('mouseenter', function () {
-        //    //add draw class to all divs, so the default color is black
-        //     // div.classList.add("draw");
-        //     // div.style.backgroundColor = "rgb(0, 0, 0)";
-        //     // div.classList.add("erase");
-        // });
-    }   
-}
 
-blackBtn.addEventListener('click', defaultColor);
-
-function defaultColor() {
+blackBtn.addEventListener('click', function () {
+    eraseGrid();
     const defaultDivs = container.children;
     for (const node of defaultDivs) {
         node.addEventListener('mouseenter', function () {
             node.style.backgroundColor = "rgb(0, 0, 0)";
-        })
+        });
     }
-}
-
-
-// function createDivs(rows, cols) {
-// 	//remove all children of container to get rid of lines at the bottom
-// 	// eraseGrid();
-// 	container.innerHTML = "";
-// 	container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
-// 	container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
-// 	//loop through to create rows*columns number of divs
-// 	for (let i = 0; i < rows * cols; i++) {
-// 		const div = document.createElement("DIV");
-// 		div.classList.add("child");
-// 		container.appendChild(div);
-// 		div.addEventListener("mouseenter", function () {
-// 			//add draw class to all divs, so the default color is black
-// 			// div.classList.add("draw");
-// 			// div.style.backgroundColor = "rgb(0, 0, 0)";
-// 			// div.classList.add("erase");
-// 		});
-// 	}
-// }
+});
 
 // add event listener for change grid 
 changeGridBtn.addEventListener("click", function () {
@@ -84,18 +43,11 @@ changeGridBtn.addEventListener("click", function () {
     }
     eraseGrid();
     createDivs(dimension, dimension);
+    defaultColor();
 });
 
 // add event listener for erase
 eraseBtn.addEventListener("click", eraseGrid);
-
-function eraseGrid() {
-    const clearGrid = container.children;
-        for (const node of clearGrid) {
-            node.style.backgroundColor = "rgb(255, 255, 255)";
-
-        }
-}
 
 // add event listener for fade to black
 fadeColorBtn.addEventListener('click', function () {
@@ -108,18 +60,21 @@ fadeColorBtn.addEventListener('click', function () {
 			// get current style
 			const style = getComputedStyle(node);
             const backgroundColor = style.backgroundColor;
-            console.log("inside fade to black original background color is: " + backgroundColor);
-            // console.log(node);
+            // console.log(backgroundColor);
+            // // console.log("inside fade to black original background color is: " + backgroundColor);
+            // // console.log(node);
 			// if div's background color is white, call get random
 			if (backgroundColor === "rgb(255, 255, 255)") {
 				const color = getRandomRGB();
-				node.style.backgroundColor = color;
-			}
+                node.style.backgroundColor = color;
+                console.log("inside white: " + color);
+            }
 			// if not white call fadeToBlack
             else {
                 const darkerColor = fadeToBlack(backgroundColor);
                 // set background color to darker color
-				node.style.backgroundColor = darkerColor;
+                node.style.backgroundColor = darkerColor;
+                console.log("inside not white: " + darkerColor);
 			}
 		});
 	}
@@ -128,7 +83,42 @@ fadeColorBtn.addEventListener('click', function () {
 // add event listener for rainbow
 rainbowBtn.addEventListener('click', function () {
     rainbow();
-})
+});
+
+
+// FUNCTIONS
+
+function createDivs(rows, cols) {
+	//remove all children of container to get rid of lines at the bottom
+	eraseGrid();
+	container.innerHTML = "";
+	container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
+	container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
+	//loop through to create rows*columns number of divs
+	for (let i = 0; i < rows * cols; i++) {
+		const div = document.createElement("DIV");
+		div.classList.add("child");
+		container.appendChild(div);
+        div.addEventListener("mouseenter", function () {
+            
+			//add draw class to all divs, so the default color is black
+			// div.classList.add("draw");
+			div.style.backgroundColor = "rgb(0, 0, 0)";
+			div.classList.add("erase");
+		});
+	}
+}
+
+
+
+function eraseGrid() {
+    const clearGrid = container.children;
+        for (const node of clearGrid) {
+            node.style.backgroundColor = "rgb(255, 255, 255)";
+        }
+}
+
+
 
 // change color of squares
 function rainbow() {

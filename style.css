@@ -87,7 +87,7 @@ input {
 .erase {
     background-color: rgb(255, 255, 255);
     color: black;
-    transition: all 1s ease-in-out;
+    transition: all 1ms ease-in-out;
 }
 
 .button-wrapper {
