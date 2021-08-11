@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 const changeGrid = document.querySelector('.change-grid');
-const changeColor = document.querySelector('.change-color');
+const fadeColor = document.querySelector('.change-color');
 const rainbowBtn = document.querySelector(".rainbow");
 const btnErase = document.querySelector('.erase');
 
@@ -9,6 +9,27 @@ const btnErase = document.querySelector('.erase');
 window.addEventListener('DOMContentLoaded', function () {
     createDivs(16, 16);
 });
+
+//create divs
+function createDivs(rows, cols) {
+    //remove all children of container to get rid of lines at the bottom
+    eraseGrid();
+    container.innerHTML = "";
+    container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
+    //loop through to create rows*columns number of divs
+    for (let i = 0; i < rows * cols; i++){
+        const div = document.createElement('DIV');
+        div.classList.add("child");
+        container.appendChild(div);
+        div.addEventListener('mouseenter', function () {
+           //add draw class to all divs, so the default color is black
+            div.classList.add("draw");
+            // div.classList.add("erase");
+        });
+        
+    }   
+}
 
 // add event listener for change grid 
 changeGrid.addEventListener("click", function () {
@@ -30,28 +51,8 @@ function eraseGrid() {
         }
 }
 
-//create divs
-function createDivs(rows, cols) {
-    //remove all children of container to get rid of lines at the bottom
-    container.innerHTML = "";
-    container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
-    //loop through to create rows*columns number of divs
-    for (let i = 0; i < rows * cols; i++){
-        const div = document.createElement('DIV');
-        div.classList.add("child");
-        container.appendChild(div);
-        div.addEventListener('mouseenter', function () {
-            // change background color to black
-            // div.style.backgroundColor = "rgb(0, 0, 0)";
-            div.classList.add("draw");
-        });
-        
-    }   
-}
-
 // add event listener for fade to black
-changeColor.addEventListener('click', function () {
+fadeColor.addEventListener('click', function () {
     eraseGrid();
 	// select all divs inside the container
     const childDivs = container.children;
@@ -60,7 +61,9 @@ changeColor.addEventListener('click', function () {
 		node.addEventListener("mouseenter", function () {
 			// get current style
 			const style = getComputedStyle(node);
-			const backgroundColor = style.backgroundColor;
+            const backgroundColor = style.backgroundColor;
+            console.log("inside fade to black original background color is: " + backgroundColor);
+            console.log(node);
 			// if div's background color is white, call get random
 			if (backgroundColor === "rgb(255, 255, 255)") {
 				const color = getRandomRGB();
@@ -76,7 +79,7 @@ changeColor.addEventListener('click', function () {
 	}
 });
 
-// add event listener for rainbox
+// add event listener for rainbow
 rainbowBtn.addEventListener('click', function () {
     rainbow();
 })
@@ -91,35 +94,12 @@ function rainbow() {
         node.addEventListener('mouseenter', function () {
             // get current style
             const style = getComputedStyle(node);
-            const backgroundColor = style.backgroundColor;
+            const bgColor = style.backgroundColor;
             const color = getRandomRGB();
             node.style.backgroundColor = color;
         });
     }
 }
-
-// function rainbow() {
-// 	eraseGrid();
-// 	// for each div inside container
-// 	const childDivs = container.children;
-// 	for (const node of childDivs) {
-// 		node.addEventListener("mouseenter", function () {
-// 			// get current style
-// 			const style = getComputedStyle(node);
-// 			const backgroundColor = style.backgroundColor;
-// 			// if div's background color is white, call get random
-// 			if (backgroundColor === "rgb(255, 255, 255)") {
-// 				const color = getRandomRGB();
-// 				node.style.backgroundColor = color;
-// 			}
-// 			// if not call fadeToBlack
-// 			else {
-// 				const darkerColor = fadeToBlack(backgroundColor);
-// 				node.style.backgroundColor = darkerColor;
-// 			}
-// 		});
-// 	}
-// }
 
 // get random color, return formatted rgb
 function getRandomRGB() {

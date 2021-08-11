@@ -72,11 +72,11 @@ input {
 }
 
 .draw {
-    background-color: black; 
+    background-color: rgb(0, 0, 0); 
 }
 
 .erase {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .button-wrapper {
