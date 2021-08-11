@@ -60,9 +60,20 @@ function rainbow() {
     const childDivs = container.children;
     for(const node of childDivs){
         node.addEventListener('mouseenter', function () {
-            const color = getRandomRGB();
-            console.log(color);
-            node.style.backgroundColor = color;
+            // get current style
+            const style = getComputedStyle(node);
+            const backgroundColor = style.backgroundColor;
+            // if div's background color is white, call get random
+            if (backgroundColor === "rgb(0, 0, 0)"){
+                const color = getRandomRGB();
+                console.log(color);
+                node.style.backgroundColor = color;
+            }
+            else {
+                fadeToBlack(backgroundColor);
+            }
+            // if not call fadeToBlack
+            
             // if square already has a background color
             // lower each color by 10%?
         });
@@ -77,7 +88,10 @@ function getRandomRGB() {
     return `rgb(${red}, ${green}, ${blue}`;
 }
 
-
+// darken div by 10%
+function fadeToBlack(color) {
+    
+}
 
 
 
