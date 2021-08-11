@@ -1,5 +1,5 @@
 let container = document.querySelector('.container');
-const btn = document.querySelector('.populate');
+const changeGrid = document.querySelector('.change-grid');
 const btnErase = document.querySelector('.erase');
 
 
