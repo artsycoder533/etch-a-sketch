@@ -42,16 +42,12 @@ function createDivs(rows, cols) {
         container.appendChild(div);
         div.addEventListener('mouseenter', function () {
             // change background color to black
-            div.style.backgroundColor = "rgb(0, 0, 0)";
-			
+            // div.style.backgroundColor = "rgb(0, 0, 0)";
+            div.classList.add("draw");
         });
         
     }   
 }
-
-// function draw() {
-//     this.classList.add('draw');
-// }
 
 // add event listener for change color
 changeColor.addEventListener('click', rainbow);
@@ -67,14 +63,13 @@ function rainbow() {
             const style = getComputedStyle(node);
             const backgroundColor = style.backgroundColor;
             // if div's background color is white, call get random
-            if (backgroundColor === "rgb(0, 0, 0)"){
+            if (backgroundColor === "rgb(255, 255, 255)"){
                 const color = getRandomRGB();
                 node.style.backgroundColor = color;
             }
             // if not call fadeToBlack
             else {
                 const darkerColor = fadeToBlack(backgroundColor);
-                console.log("darkerColor inside rainbow() is: " + darkerColor);
                 node.style.backgroundColor = darkerColor;
             }
             
