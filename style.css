@@ -10,6 +10,7 @@ body {
     width: 100%;
     display: grid;
     place-items: center;
+    background-color: black;
 }
 
 .controls {
@@ -27,11 +28,12 @@ body {
     font-family:'Courier New', Courier, monospace;
     text-transform: uppercase;
     background: black;
-    color: white;
+    color: black;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     cursor: pointer;
+    transition: all 1s ease-in-out;
 }
 
 .control-btn:hover {
@@ -59,9 +61,10 @@ body {
     height: 500px;
     justify-content: center;
     margin: auto;   
-    background-color: white;
+    background-color: black;
     border-radius: 5px;
     border: 2px solid black;
+    transition: all 1s ease-in-out;
 }
 
 input {
@@ -77,6 +80,8 @@ input {
 
 .erase {
     background-color: rgb(255, 255, 255);
+    color: white;
+    transition: all 1s ease-in-out;
 }
 
 .button-wrapper {

@@ -1,13 +1,28 @@
+// variables
 const container = document.querySelector('.container');
-const changeGrid = document.querySelector('.change-grid');
-const fadeColor = document.querySelector('.change-color');
+const changeGridBtn = document.querySelector('.change-grid');
+const fadeColorBtn = document.querySelector('.change-color');
 const rainbowBtn = document.querySelector(".rainbow");
-const btnErase = document.querySelector('.erase');
+const eraseBtn = document.querySelector('.erase');
+const powerBtn = document.querySelector('.power');
 
 
 // add onload event
 window.addEventListener('DOMContentLoaded', function () {
-    createDivs(16, 16);
+    powerBtn.addEventListener('click', function () {
+        // turn screen on
+        container.style.backgroundColor = "white";
+        // change text of buttons to white
+        fadeColorBtn.style.color = "white";
+        changeGridBtn.style.color = "white";
+        rainbowBtn.style.color = "white";
+        // change background color of erase button to white
+        eraseBtn.style.color = "black";
+        // change background color to white
+        document.body.style.backgroundColor = "white";
+        createDivs(16, 16);
+    });
+    
 });
 
 //create divs
@@ -32,7 +47,7 @@ function createDivs(rows, cols) {
 }
 
 // add event listener for change grid 
-changeGrid.addEventListener("click", function () {
+changeGridBtn.addEventListener("click", function () {
     const dimension = prompt("how many squares per side? Choose a number between 1 & 99");
     while ((dimension > 100) && (dimension <= 0)) {
         prompt("Please choose an integer less than 100");
@@ -42,7 +57,7 @@ changeGrid.addEventListener("click", function () {
 });
 
 // add event listener for erase
-btnErase.addEventListener("click", eraseGrid);
+eraseBtn.addEventListener("click", eraseGrid);
 
 function eraseGrid() {
     const clearGrid = container.children;
@@ -52,7 +67,7 @@ function eraseGrid() {
 }
 
 // add event listener for fade to black
-fadeColor.addEventListener('click', function () {
+fadeColorBtn.addEventListener('click', function () {
     eraseGrid();
 	// select all divs inside the container
     const childDivs = container.children;
