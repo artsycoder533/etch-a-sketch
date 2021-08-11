@@ -24,11 +24,11 @@ btnErase.addEventListener("click", eraseGrid);
 
 function eraseGrid() {
     const clearGrid = container.children;
-			for (const node of clearGrid) {
-				if (node.classList.contains("draw")) {
-					node.classList.add("erase");
-				}
-			}
+        for (const node of clearGrid) {
+            if (node.classList.contains("draw")) {
+                node.classList.remove("draw");
+            }
+        }
 }
 
 //create divs
@@ -63,6 +63,8 @@ function rainbow() {
             const color = getRandomRGB();
             console.log(color);
             node.style.backgroundColor = color;
+            // if square already has a background color
+            // lower each color by 10%?
         });
     }
 }
