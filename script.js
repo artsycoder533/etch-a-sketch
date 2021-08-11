@@ -1,5 +1,6 @@
 let container = document.querySelector('.container');
 const changeGrid = document.querySelector('.change-grid');
+const changeColor = document.querySelector('.change-color');
 const btnErase = document.querySelector('.erase');
 
 
@@ -8,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
     createDivs(16, 16);
 });
 
+// add event listener for change grid 
 changeGrid.addEventListener("click", function () {
     const dimension = prompt("how many squares per side? Choose a number between 1 & 99");
     while ((dimension > 100) && (dimension <= 0)) {
@@ -16,9 +18,14 @@ changeGrid.addEventListener("click", function () {
         createDivs(dimension, dimension);
 });
 
+// add event listener for erase
 btnErase.addEventListener("click", function () {
-    const erase = container.childNodes;
-    erase.style.backgroundColor = "white";
+    const clearGrid = container.children;
+    for (const node of clearGrid) {
+        if (node.classList.contains("draw")) {
+            node.classList.add("erase");
+        }
+    }
 })
 
 //create divs
