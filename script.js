@@ -6,6 +6,7 @@ const fadeColorBtn = document.querySelector('.change-color');
 const rainbowBtn = document.querySelector(".rainbow");
 const eraseBtn = document.querySelector('.erase');
 const powerBtn = document.querySelector('.power');
+const date = document.getElementById("date");
 
 //EVENT LISTENERS
 
@@ -21,7 +22,6 @@ window.addEventListener('DOMContentLoaded', function () {
         eraseBtn.classList.toggle("showText");
         createDivs(16, 16);
     });
-    
 });
 
 
@@ -60,9 +60,6 @@ fadeColorBtn.addEventListener('click', function () {
 			// get current style
 			const style = getComputedStyle(node);
             const backgroundColor = style.backgroundColor;
-            // console.log(backgroundColor);
-            // // console.log("inside fade to black original background color is: " + backgroundColor);
-            // // console.log(node);
 			// if div's background color is white, call get random
 			if (backgroundColor === "rgb(255, 255, 255)") {
 				const color = getRandomRGB();
@@ -100,16 +97,12 @@ function createDivs(rows, cols) {
 		div.classList.add("child");
 		container.appendChild(div);
         div.addEventListener("mouseenter", function () {
-            
-			//add draw class to all divs, so the default color is black
-			// div.classList.add("draw");
+            // set default background color to black
 			div.style.backgroundColor = "rgb(0, 0, 0)";
 			div.classList.add("erase");
 		});
 	}
 }
-
-
 
 function eraseGrid() {
     const clearGrid = container.children;
@@ -117,8 +110,6 @@ function eraseGrid() {
             node.style.backgroundColor = "rgb(255, 255, 255)";
         }
 }
-
-
 
 // change color of squares
 function rainbow() {
@@ -167,7 +158,8 @@ function returnColor(arr) {
 }
 
 
-
+// get date
+date.innerHTML = new Date().getFullYear();
 
 
 
