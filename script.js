@@ -66,13 +66,13 @@ function rainbow() {
             // if div's background color is white, call get random
             if (backgroundColor === "rgb(0, 0, 0)"){
                 const color = getRandomRGB();
-                console.log(color);
                 node.style.backgroundColor = color;
             }
+            // if not call fadeToBlack
             else {
                 fadeToBlack(backgroundColor);
             }
-            // if not call fadeToBlack
+            
             
             // if square already has a background color
             // lower each color by 10%?
@@ -85,12 +85,18 @@ function getRandomRGB() {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
     const blue = Math.floor(Math.random() * 256);
-    return `rgb(${red}, ${green}, ${blue}`;
+    return `rgb(${red}, ${green}, ${blue})`;
 }
 
 // darken div by 10%
 function fadeToBlack(color) {
-    
+    // extract each rgb color from the string
+    // trim color to remove white space
+    const rgbString = color.substring(4, color.length - 1);
+    // turn rbgString into an array
+    const colorArray = rgbString.split(",");
+    console.log(colorArray);
+
 }
 
 
