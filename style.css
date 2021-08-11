@@ -119,6 +119,10 @@ p {
     text-shadow: 2px 2px 4px black;
 }
 
+.footer {
+    color: black;
+    font-weight: 400;
+}
 /* toggle classes */
 .blackout {
     background-color: black;

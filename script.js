@@ -10,18 +10,12 @@ const powerBtn = document.querySelector('.power');
 // add onload event
 window.addEventListener('DOMContentLoaded', function () {
     powerBtn.addEventListener('click', function () {
-        // turn screen on
-        // container.style.backgroundColor = "white";
-        // change text of buttons to white
+        // simulate turning power on
         fadeColorBtn.classList.toggle("blackout");
         changeGridBtn.classList.toggle("blackout");
         rainbowBtn.classList.toggle("blackout");
         container.classList.toggle("blackout");
         eraseBtn.classList.toggle("showText");
-        // change background color of erase button to white
-        // change background color to white
-        // document.body.style.backgroundColor = "white";
-
         createDivs(16, 16);
     });
     
