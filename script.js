@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 const changeGrid = document.querySelector('.change-grid');
 const changeColor = document.querySelector('.change-color');
+const rainbowBtn = document.querySelector(".rainbow");
 const btnErase = document.querySelector('.erase');
 
 
