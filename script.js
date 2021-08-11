@@ -33,6 +33,8 @@ function eraseGrid() {
 
 //create divs
 function createDivs(rows, cols) {
+    //remove all children
+    container.innerHTML = "";
     container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
     //loop through to create rows*columns number of divs
