@@ -53,8 +53,9 @@ function createDivs(rows, cols) {
 // add event listener for fade to black
 changeColor.addEventListener('click', function () {
     eraseGrid();
-	// for each div inside container
-	const childDivs = container.children;
+	// select all divs inside the container
+    const childDivs = container.children;
+    // for each div, get the backround color
 	for (const node of childDivs) {
 		node.addEventListener("mouseenter", function () {
 			// get current style
@@ -65,13 +66,10 @@ changeColor.addEventListener('click', function () {
 				const color = getRandomRGB();
 				node.style.backgroundColor = color;
 			}
-			// if not call fadeToBlack
+			// if not white call fadeToBlack
             else {
-                console.log("original color: " + backgroundColor);
-                const rgbString = backgroundColor.substring(4, backgroundColor.length - 1);
-                // turn rbgString into an array
-                const colorArray = rgbString.split(",");
-                const darkerColor = returnColor(colorArray);
+                const darkerColor = fadeToBlack(backgroundColor);
+                // set background color to darker color
 				node.style.backgroundColor = darkerColor;
 			}
 		});
@@ -86,8 +84,9 @@ rainbowBtn.addEventListener('click', function () {
 // change color of squares
 function rainbow() {
     eraseGrid();
-    // for each div inside container
+    // select all divs inside the container
     const childDivs = container.children;
+    // for every div, set its background color to a random rgb color
     for(const node of childDivs){
         node.addEventListener('mouseenter', function () {
             // get current style
@@ -122,7 +121,7 @@ function rainbow() {
 // 	}
 // }
 
-// get random rgb color
+// get random color, return formatted rgb
 function getRandomRGB() {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
@@ -130,34 +129,24 @@ function getRandomRGB() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
-// darken div by 10%
+// darken div by 10% with each pass through
 function fadeToBlack(color) {
-    // extract each rgb color from the string
-    // trim color to remove white space
-    console.log("original color: " + color);
+    // extract just color values from string (trim off "rgb(" and ending ")" )
     const rgbString = color.substring(4, color.length - 1);
-    // turn rbgString into an array
+    // turn rbgString into an array, split at comma
     const colorArray = rgbString.split(",");
-    returnColor(colorArray);
-    // const r = Math.floor(parseInt(colorArray[0]) - 0.1 * (parseInt(colorArray[0])));
-    // console.log(r);
-    // const g = Math.floor(parseInt(colorArray[1]) - 0.1 * parseInt(colorArray[1]));
-    // console.log(g);
-    // const b = Math.floor(parseInt(colorArray[2]) - 0.1 * parseInt(colorArray[2]));
-    // console.log(b);
-    // console.log(` darker color: rgb(${r}, ${g}, ${b})`);
-    // return `rgb(${r}, ${g}, ${b})`;
-    
+    // pass array to returnColor to format back into rgb syntax
+    const newColor = returnColor(colorArray);
+    return newColor;
 }
 
+// return formatted rgb color
 function returnColor(arr) {
+    // subtract 10% of each individual rgb color value
     const r = Math.floor(parseInt(arr[0]) - 0.1 * (parseInt(arr[0])));
-    console.log(r);
     const g = Math.floor(parseInt(arr[1]) - 0.1 * parseInt(arr[1]));
-    console.log(g);
     const b = Math.floor(parseInt(arr[2]) - 0.1 * parseInt(arr[2]));
-    console.log(b);
-    console.log(` darker color: rgb(${r}, ${g}, ${b})`);
+    // return the new color
     return `rgb(${r}, ${g}, ${b})`;
 }
 
