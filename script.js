@@ -50,8 +50,38 @@ function createDivs(rows, cols) {
     }   
 }
 
-// add event listener for change color
-changeColor.addEventListener('click', rainbow);
+// add event listener for fade to black
+changeColor.addEventListener('click', function () {
+    eraseGrid();
+	// for each div inside container
+	const childDivs = container.children;
+	for (const node of childDivs) {
+		node.addEventListener("mouseenter", function () {
+			// get current style
+			const style = getComputedStyle(node);
+			const backgroundColor = style.backgroundColor;
+			// if div's background color is white, call get random
+			if (backgroundColor === "rgb(255, 255, 255)") {
+				const color = getRandomRGB();
+				node.style.backgroundColor = color;
+			}
+			// if not call fadeToBlack
+            else {
+                console.log("original color: " + backgroundColor);
+                const rgbString = backgroundColor.substring(4, backgroundColor.length - 1);
+                // turn rbgString into an array
+                const colorArray = rgbString.split(",");
+                const darkerColor = returnColor(colorArray);
+				node.style.backgroundColor = darkerColor;
+			}
+		});
+	}
+});
+
+// add event listener for rainbox
+rainbowBtn.addEventListener('click', function () {
+    rainbow();
+})
 
 // change color of squares
 function rainbow() {
@@ -63,23 +93,34 @@ function rainbow() {
             // get current style
             const style = getComputedStyle(node);
             const backgroundColor = style.backgroundColor;
-            // if div's background color is white, call get random
-            if (backgroundColor === "rgb(255, 255, 255)"){
-                const color = getRandomRGB();
-                node.style.backgroundColor = color;
-            }
-            // if not call fadeToBlack
-            else {
-                const darkerColor = fadeToBlack(backgroundColor);
-                node.style.backgroundColor = darkerColor;
-            }
-            
-            
-            // if square already has a background color
-            // lower each color by 10%?
+            const color = getRandomRGB();
+            node.style.backgroundColor = color;
         });
     }
 }
+
+// function rainbow() {
+// 	eraseGrid();
+// 	// for each div inside container
+// 	const childDivs = container.children;
+// 	for (const node of childDivs) {
+// 		node.addEventListener("mouseenter", function () {
+// 			// get current style
+// 			const style = getComputedStyle(node);
+// 			const backgroundColor = style.backgroundColor;
+// 			// if div's background color is white, call get random
+// 			if (backgroundColor === "rgb(255, 255, 255)") {
+// 				const color = getRandomRGB();
+// 				node.style.backgroundColor = color;
+// 			}
+// 			// if not call fadeToBlack
+// 			else {
+// 				const darkerColor = fadeToBlack(backgroundColor);
+// 				node.style.backgroundColor = darkerColor;
+// 			}
+// 		});
+// 	}
+// }
 
 // get random rgb color
 function getRandomRGB() {
@@ -97,17 +138,28 @@ function fadeToBlack(color) {
     const rgbString = color.substring(4, color.length - 1);
     // turn rbgString into an array
     const colorArray = rgbString.split(",");
-    const r = Math.floor(parseInt(colorArray[0]) - 0.1 * (parseInt(colorArray[0])));
+    returnColor(colorArray);
+    // const r = Math.floor(parseInt(colorArray[0]) - 0.1 * (parseInt(colorArray[0])));
+    // console.log(r);
+    // const g = Math.floor(parseInt(colorArray[1]) - 0.1 * parseInt(colorArray[1]));
+    // console.log(g);
+    // const b = Math.floor(parseInt(colorArray[2]) - 0.1 * parseInt(colorArray[2]));
+    // console.log(b);
+    // console.log(` darker color: rgb(${r}, ${g}, ${b})`);
+    // return `rgb(${r}, ${g}, ${b})`;
+    
+}
+
+function returnColor(arr) {
+    const r = Math.floor(parseInt(arr[0]) - 0.1 * (parseInt(arr[0])));
     console.log(r);
-    const g = Math.floor(parseInt(colorArray[1]) - 0.1 * parseInt(colorArray[1]));
+    const g = Math.floor(parseInt(arr[1]) - 0.1 * parseInt(arr[1]));
     console.log(g);
-    const b = Math.floor(parseInt(colorArray[2]) - 0.1 * parseInt(colorArray[2]));
+    const b = Math.floor(parseInt(arr[2]) - 0.1 * parseInt(arr[2]));
     console.log(b);
     console.log(` darker color: rgb(${r}, ${g}, ${b})`);
     return `rgb(${r}, ${g}, ${b})`;
 }
-
-
 
 
 
