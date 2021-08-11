@@ -2,6 +2,12 @@ let container = document.querySelector('.container');
 const btn = document.querySelector('.populate');
 const btnErase = document.querySelector('.erase');
 
+
+// add onload event
+window.addEventListener('DOMContentLoaded', function () {
+    createDivs(16, 16);
+});
+
 btn.addEventListener("click", function () {
     const dimension = prompt("how many squares per side?");
     while ((dimension > 100) && (dimension <= 0)) {
