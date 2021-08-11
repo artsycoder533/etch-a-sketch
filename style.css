@@ -10,7 +10,8 @@ body {
     width: 100%;
     display: grid;
     place-items: center;
-    background-color: black;
+    background-color: white;
+    transition: all 1s ease-in-out;
 }
 
 .controls {
@@ -28,7 +29,7 @@ body {
     font-family:'Courier New', Courier, monospace;
     text-transform: uppercase;
     background: black;
-    color: black;
+    color: white;
     border-radius: 5px;
     border: none;
     font-size: 16px;
@@ -61,7 +62,7 @@ body {
     height: 500px;
     justify-content: center;
     margin: auto;   
-    background-color: black;
+    background-color: white;
     border-radius: 5px;
     border: 2px solid black;
     transition: all 1s ease-in-out;
@@ -78,9 +79,13 @@ input {
     background-color: rgb(0, 0, 0); 
 }
 
+.power {
+    color: black;
+}
+
 .erase {
     background-color: rgb(255, 255, 255);
-    color: white;
+    color: black;
     transition: all 1s ease-in-out;
 }
 
@@ -112,4 +117,15 @@ p {
     color: gold;
     font-weight: 700;
     text-shadow: 2px 2px 4px black;
+}
+
+/* toggle classes */
+.blackout {
+    background-color: black;
+    color: black;
+}
+
+.showText {
+    color: white;
+    transition: all 1s ease-in-out;
 }
