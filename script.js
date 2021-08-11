@@ -55,6 +55,7 @@ changeColor.addEventListener('click', rainbow);
 
 // change color of squares
 function rainbow() {
+    eraseGrid();
     // for each div inside container
     const childDivs = container.children;
     for(const node of childDivs){
