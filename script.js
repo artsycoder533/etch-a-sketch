@@ -25,9 +25,7 @@ btnErase.addEventListener("click", eraseGrid);
 function eraseGrid() {
     const clearGrid = container.children;
         for (const node of clearGrid) {
-            if (node.classList.contains("draw")) {
-                node.classList.remove("draw");
-            }
+            node.style.backgroundColor = "rgb(255, 255, 255)";
         }
 }
 
@@ -40,15 +38,20 @@ function createDivs(rows, cols) {
     //loop through to create rows*columns number of divs
     for (let i = 0; i < rows * cols; i++){
         const div = document.createElement('DIV');
-        div.addEventListener('mouseenter', draw);
-        div.classList.add('child');
+        div.classList.add("child");
         container.appendChild(div);
+        div.addEventListener('mouseenter', function () {
+            // change background color to black
+            div.style.backgroundColor = "rgb(0, 0, 0)";
+			
+        });
+        
     }   
 }
 
-function draw() {
-    this.classList.add('draw');
-}
+// function draw() {
+//     this.classList.add('draw');
+// }
 
 // add event listener for change color
 changeColor.addEventListener('click', rainbow);
