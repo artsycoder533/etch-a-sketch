@@ -70,7 +70,9 @@ function rainbow() {
             }
             // if not call fadeToBlack
             else {
-                fadeToBlack(backgroundColor);
+                const darkerColor = fadeToBlack(backgroundColor);
+                console.log("darkerColor inside rainbow() is: " + darkerColor);
+                node.style.backgroundColor = darkerColor;
             }
             
             
@@ -92,11 +94,18 @@ function getRandomRGB() {
 function fadeToBlack(color) {
     // extract each rgb color from the string
     // trim color to remove white space
+    console.log("original color: " + color);
     const rgbString = color.substring(4, color.length - 1);
     // turn rbgString into an array
     const colorArray = rgbString.split(",");
-    console.log(colorArray);
-
+    const r = Math.floor(parseInt(colorArray[0]) - 0.1 * (parseInt(colorArray[0])));
+    console.log(r);
+    const g = Math.floor(parseInt(colorArray[1]) - 0.1 * parseInt(colorArray[1]));
+    console.log(g);
+    const b = Math.floor(parseInt(colorArray[2]) - 0.1 * parseInt(colorArray[2]));
+    console.log(b);
+    console.log(` darker color: rgb(${r}, ${g}, ${b})`);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
