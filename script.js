@@ -33,7 +33,7 @@ function eraseGrid() {
 
 //create divs
 function createDivs(rows, cols) {
-    //remove all children
+    //remove all children of container to get rid of lines at the bottom
     container.innerHTML = "";
     container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
@@ -48,6 +48,30 @@ function createDivs(rows, cols) {
 
 function draw() {
     this.classList.add('draw');
+}
+
+// add event listener for change color
+changeColor.addEventListener('click', rainbow);
+
+// change color of squares
+function rainbow() {
+    // for each div inside container
+    const childDivs = container.children;
+    for(const node of childDivs){
+        node.addEventListener('mouseenter', function () {
+            const color = getRandomRGB();
+            console.log(color);
+            node.style.backgroundColor = color;
+        });
+    }
+}
+
+// get random rgb color
+function getRandomRGB() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue}`;
 }
 
 
