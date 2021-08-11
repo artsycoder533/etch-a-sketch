@@ -27,8 +27,8 @@ body {
 
 .container {
     display: grid;
-    width: 650px;
-    height: 650px;
+    width: 450px;
+    height: 450px;
     justify-content: center;
     margin: auto;   
     background-color: white;
