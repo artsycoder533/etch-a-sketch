@@ -1,4 +1,4 @@
-let container = document.querySelector('.container');
+const container = document.querySelector('.container');
 const changeGrid = document.querySelector('.change-grid');
 const changeColor = document.querySelector('.change-color');
 const btnErase = document.querySelector('.erase');
@@ -15,18 +15,21 @@ changeGrid.addEventListener("click", function () {
     while ((dimension > 100) && (dimension <= 0)) {
         prompt("Please choose an integer less than 100");
     }
-        createDivs(dimension, dimension);
+    eraseGrid();
+    createDivs(dimension, dimension);
 });
 
 // add event listener for erase
-btnErase.addEventListener("click", function () {
+btnErase.addEventListener("click", eraseGrid);
+
+function eraseGrid() {
     const clearGrid = container.children;
-    for (const node of clearGrid) {
-        if (node.classList.contains("draw")) {
-            node.classList.add("erase");
-        }
-    }
-})
+			for (const node of clearGrid) {
+				if (node.classList.contains("draw")) {
+					node.classList.add("erase");
+				}
+			}
+}
 
 //create divs
 function createDivs(rows, cols) {
