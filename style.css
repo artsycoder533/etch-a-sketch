@@ -66,6 +66,7 @@ body {
     border-radius: 5px;
     border: 2px solid black;
     transition: all 1s ease-in-out;
+    cursor: crosshair;
 }
 
 input {
@@ -122,6 +123,7 @@ p {
 .footer {
     color: black;
     font-weight: 400;
+    font-size: 20px;
 }
 /* toggle classes */
 .blackout {

@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function () {
 //create divs
 function createDivs(rows, cols) {
     //remove all children of container to get rid of lines at the bottom
-    eraseGrid();
+    // eraseGrid();
     container.innerHTML = "";
     container.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${cols}, 1fr)`;
@@ -35,7 +35,8 @@ function createDivs(rows, cols) {
         container.appendChild(div);
         div.addEventListener('mouseenter', function () {
            //add draw class to all divs, so the default color is black
-            div.classList.add("draw");
+            // div.classList.add("draw");
+            // div.style.backgroundColor = "rgb(0, 0, 0)";
             // div.classList.add("erase");
         });
         
@@ -59,6 +60,7 @@ function eraseGrid() {
     const clearGrid = container.children;
         for (const node of clearGrid) {
             node.style.backgroundColor = "rgb(255, 255, 255)";
+
         }
 }
 
@@ -74,7 +76,7 @@ fadeColorBtn.addEventListener('click', function () {
 			const style = getComputedStyle(node);
             const backgroundColor = style.backgroundColor;
             console.log("inside fade to black original background color is: " + backgroundColor);
-            console.log(node);
+            // console.log(node);
 			// if div's background color is white, call get random
 			if (backgroundColor === "rgb(255, 255, 255)") {
 				const color = getRandomRGB();
