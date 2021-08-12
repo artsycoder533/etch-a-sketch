@@ -23,8 +23,8 @@ The purpose of this project was to create a browser verion of an Etch-A-Sketch. 
 
 ### Links
 
--Solution URL: [See My Code](https://github.com/artsycoder533/etch-a-sketch.git)
--Live Site URL: [See Live Site](https://artsycoder533.github.io/etch-a-sketch/)
+- Solution URL: [See My Code](https://github.com/artsycoder533/etch-a-sketch.git)
+- Live Site URL: [See Live Site](https://artsycoder533.github.io/etch-a-sketch/)
 
 ## My Process
 
@@ -32,10 +32,10 @@ For this project I read the assignment criteria to make sure I fully understood 
 
 ### Built With
 
--HTML5
--CSS3
--CSS Grid
--Javascript
+- HTML5
+- CSS3
+- CSS Grid
+- Javascript
 
 ### What I learned
 
