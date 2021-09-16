@@ -2,6 +2,8 @@
 
 This is my solution to [Project Etch-A-Sketch](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project)
 
+[![wakatime](https://wakatime.com/badge/github/artsycoder533/etch-a-sketch.svg)](https://wakatime.com/badge/github/artsycoder533/etch-a-sketch)
+
 ## Table of Contents
 
 - [Overview](#overview)
